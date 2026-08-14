@@ -213,9 +213,8 @@ total size is 5,723,218  speedup is 1.00
 ```shell
 $ ssh xilinx@pynq
 ...
-Welcome to PYNQ Linux, based on Ubuntu 22.04 (GNU/Linux 6.6.10-xilinx-v2024.1-gb36799f4e960 armv7l)
-
-Last login: Fri Oct 24 21:58:37 2025
+Welcome to PYNQ Linux, based on Ubuntu 22.04 (GNU/Linux 6.6.10-xilinx-v2024.1-g3c0eca68c652 armv7l)
+...
 xilinx@pynq:~$
 ```
 
@@ -254,18 +253,23 @@ Successfully installed pyrtl-1.0.3
 
 Run the
 [`fpga_inference.py`](https://github.com/UCSBarchlab/pyrtlnet/blob/main/fpga/fpga_inference.py)
-driver script on the Pynq Z2, which:
-1. Loads the `pynq` runtime environment
-1. Copies the `pyrtlnet` bitstream to the FPGA
-1. Loads the MNIST test image in a
-   [Pynq `Buffer`](https://pynq.readthedocs.io/en/latest/pynq_libraries/allocate.html#allocate)
-1. Transmits the `Buffer` to the FPGA via
-   [AXI DMA](https://discuss.pynq.io/t/tutorial-pynq-dma-part-1-hardware-design/3133)
-1. Retrieves the inference results via AXI
+driver script on the Pynq Z2:
 
 ```shell
 (pynq-venv) root@pynq:/home/xilinx# python fpga_inference.py
 ```
+
+This script does the following:
+
+1. Loads the `pynq` runtime environment.
+1. Copies the `pyrtlnet` bitstream to the FPGA.
+1. Loads the MNIST test image in a
+   [Pynq `Buffer`](https://pynq.readthedocs.io/en/latest/pynq_libraries/allocate.html#allocate).
+1. Transmits the `Buffer` to the FPGA via
+   [AXI DMA](https://discuss.pynq.io/t/tutorial-pynq-dma-part-1-hardware-design/3133).
+1. Retrieves the inference results via AXI.
+
+The script's output should look like this:
 
 ![fpga_inference.py screenshot](../docs/images/fpga_inference.png)
 
